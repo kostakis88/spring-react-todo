@@ -11,10 +11,11 @@ class ToDoList extends Component {
 
   render() {
     return (
-      <table>
+      <div className="container">
+        <h1>ToDos</h1>
+        <table className="table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Description</th>
             <th>Status</th>
             <th>Due Date</th>
@@ -23,7 +24,6 @@ class ToDoList extends Component {
         <tbody>
           {this.state.todos.map(todo => 
             <tr key={todo.id}>
-              <td>{todo.id}</td>
               <td>{todo.description}</td>
               <td>{todo.isCompleted.toString()}</td>
               <td>{todo.dueDate.toString()}</td>
@@ -31,6 +31,7 @@ class ToDoList extends Component {
           )}
         </tbody>
       </table>
+      </div>
     );
   }
 }

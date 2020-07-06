@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Authentication from './Authentication.js';
 
 class Login extends Component {
   state = {
@@ -16,6 +17,7 @@ class Login extends Component {
   handleLoginClick = () => {
     const { username, password } = this.state;
     if (username === "kostas" && password === "test") {
+      Authentication.registerSuccessfullLogin(username, password)
       this.props.history.push(`/welcome/${username}`);
     } else {
       this.setState({
@@ -27,10 +29,13 @@ class Login extends Component {
   render() {
     return (
       <div>
-        {this.state.logginFailed && <div>Email or Password is wrong!</div>}
-        User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
-        Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
-        <button onClick={this.handleLoginClick}>Login</button>
+        <div className="container">
+          <h1>Login</h1>
+          {this.state.logginFailed && <div className="alert alert-warning">Email or Password is wrong!</div>}
+          User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
+          Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
+          <button className="btn btn-primary" onClick={this.handleLoginClick}>Login</button>
+        </div>
       </div>
     );
   }
