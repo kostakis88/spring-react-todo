@@ -7,7 +7,7 @@ function Welcome(props) {
   const [welcomeMessage, setWelcomeMessage] = useState('');
 
   const retrieveWelcomeMessage = () => {
-    HelloWorldService.executeHelloWorldService()
+    HelloWorldService.executeHelloWorldService(props.match.params.name)
     .then( response => setWelcomeMessage(response.data.message) );
   }
 
