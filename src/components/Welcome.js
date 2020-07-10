@@ -8,7 +8,7 @@ function Welcome(props) {
 
   const retrieveWelcomeMessage = () => {
     HelloWorldService.executeHelloWorldService()
-    .then( response => setWelcomeMessage(response.data) );
+    .then( response => setWelcomeMessage(response.data.message) );
   }
 
   return (
