@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
+import TodoDataService from '../api/TodoDataService';
+import Authentication from './Authentication';
 
 class ToDoList extends Component {
   state = {
-    todos: [
-      {id : 1, description: "Lean React", isCompleted: false, dueDate: new Date()},
-      {id : 2, description: "Lean Java", isCompleted: false, dueDate: new Date() },
-      {id : 3, description: "Lean TypeScript", isCompleted: false, dueDate: new Date() }
-    ]
+    todos: []
   };
+
+  componentDidMount() {
+    let username = Authentication.getLoggedInUsername();
+    TodoDataService.retrieveAllTodos(username)
+      .then(response => {
+        this.setState({
+          todos: response.data
+        });
+      });
+  }
 
   render() {
     return (
@@ -17,16 +25,16 @@ class ToDoList extends Component {
         <thead>
           <tr>
             <th>Description</th>
-            <th>Status</th>
             <th>Due Date</th>
+            <th>is it Completed?</th>
           </tr>
         </thead>
         <tbody>
           {this.state.todos.map(todo => 
             <tr key={todo.id}>
               <td>{todo.description}</td>
-              <td>{todo.isCompleted.toString()}</td>
-              <td>{todo.dueDate.toString()}</td>
+              <td>{todo.targetDate.toString()}</td>
+              <td>{todo.done.toString()}</td>
             </tr>
           )}
         </tbody>
