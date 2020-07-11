@@ -1,4 +1,4 @@
-package com.kostas.rest.webservices.demo;
+package com.kostas.rest.webservices.demo.helloworld;
 
 public class HelloWorldBean {
 

@@ -1,4 +1,4 @@
-package com.kostas.rest.webservices.demo;
+package com.kostas.rest.webservices.demo.helloworld;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
