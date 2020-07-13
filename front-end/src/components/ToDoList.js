@@ -22,7 +22,7 @@ class ToDoList extends Component {
     });
   }
 
-  handleDelteClick = (id) => {
+  handleDeleteClick = (id) => {
     let username = Authentication.getLoggedInUsername();
     TodoDataService.deleteTodo(username, id)
       .then(response => {
@@ -31,6 +31,10 @@ class ToDoList extends Component {
         }); 
         this.refreshTodos(username);
       });
+  }
+
+  handleUpdateClick = (id) => {
+    this.props.history.push(`/todos/${id}`);
   }
 
   render() {
@@ -44,6 +48,7 @@ class ToDoList extends Component {
             <th>Description</th>
             <th>Due Date</th>
             <th>is it Completed?</th>
+            <th>Update</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -53,7 +58,8 @@ class ToDoList extends Component {
               <td>{todo.description}</td>
               <td>{todo.targetDate.toString()}</td>
               <td>{todo.done.toString()}</td>
-              <td><button className="btn btn-warning" onClick={() => this.handleDelteClick(todo.id)}>Delete</button></td>
+              <td><button className="btn btn-success" onClick={() => this.handleUpdateClick(todo.id)}>Update</button></td>
+              <td><button className="btn btn-warning" onClick={() => this.handleDeleteClick(todo.id)}>Delete</button></td>
             </tr>
           )}
         </tbody>

@@ -7,6 +7,7 @@ import ToDoList from './ToDoList';
 import Header from './Header';
 import Footer from './Footer';
 import Logout from './Logout';
+import ToDo from './ToDo';
 import AuthenticatedRoute from './AuthenticatedRoute';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route path="/" exact component={Login}/>
             <Route path="/login" component={Login}/>
             <AuthenticatedRoute path="/welcome/:name" component={Welcome} />
+            <AuthenticatedRoute path="/todos/:id" component={ToDo}/>
             <AuthenticatedRoute path="/todos" component={ToDoList} />
             <AuthenticatedRoute path="/logout" component={Logout} />
             <Route component={Error}/>
