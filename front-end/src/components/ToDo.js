@@ -25,7 +25,13 @@ class Todo extends Component {
   }
 
   handleSubmit = (values) => {
-    console.log(values)
+    let username = Authentication.getLoggedInUsername();
+    const {id} = this.state;
+    TodoDataService.updateTodo(username, id, {
+      id: id,
+      description: values.description,
+      targetDate: values.targetDate
+    }).then(() => this.props.history.push('/todos'));
   }
 
   handleValidation = (values) => {
