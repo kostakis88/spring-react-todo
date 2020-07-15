@@ -38,6 +38,10 @@ class ToDoList extends Component {
     this.props.history.push(`/todos/${id}`);
   }
 
+  handleAddClick = () => {
+    this.props.history.push('/todos/-1');
+  }
+
   render() {
     return (
       <div className="container">
@@ -65,6 +69,9 @@ class ToDoList extends Component {
           )}
         </tbody>
       </table>
+      <div className="row">
+        <button className="btn btn-success" onClick={this.handleAddClick}>Add</button>
+      </div>
       </div>
     );
   }
